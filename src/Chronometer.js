@@ -55,5 +55,4 @@ class Chronometer extends React.Component {
   }
 }
 
-
 export default Chronometer;
