@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom' 
+import "./lcars.css";
 
 class Chronometer extends React.Component {
   constructor(props) {
@@ -19,8 +20,8 @@ class Chronometer extends React.Component {
           seconds: seconds - 1
         }))
       }
-      if (seconds === 0) {
-        if (minutes === 0) {
+      if (seconds === '0'|| seconds === 0) {
+        if (minutes === '0' || minutes === 0) {
           clearInterval(this.myInterval)
         } else {
           this.setState(({ minutes }) => ({
@@ -42,15 +43,15 @@ class Chronometer extends React.Component {
     const { turnOff } = this.props;
 
     return (
-      <div>
         <div>
-        { minutes === 0 && seconds === 0 
-          ? <h1>FIM!</h1>
-          : <h1>Tempo Restante { minutes}:{seconds < 10 ? `0${seconds}` : seconds} </h1>
-        }
-        </div>
-        <Link to="/" onClick={ turnOff }>Desligar cronômetro</Link>
-      </div>
+          <div>
+          { ((minutes === '0' || minutes === 0) && (seconds === '0' || seconds === 0) )
+           ? <h1>FIM!</h1>
+            : <h1>Tempo Restante { minutes}:{seconds < 10 ? `0${seconds}` : seconds} </h1>
+         }
+         </div>
+          <Link to="/" className="button" onClick={ turnOff }>Desligar cronômetro</Link>
+       </div>
     )
   }
 }
